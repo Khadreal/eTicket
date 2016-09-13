@@ -23,6 +23,8 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Status</th>
+                        <th>User</th>
+                        <th>Comment</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,6 +33,14 @@
                             <td>{!! $ticket->id !!} </td>
                             <td><a href="{!! action('TicketsController@show', $ticket->slug) !!}">{!! $ticket->title !!} </a></td>
                             <td>{!! $ticket->status ? 'Pending' : 'Answered' !!}</td>
+                            <td>
+                                @if ($ticket->user)
+                                    {{ $ticket->user->name }} on {!! $ticket->created_at->format('Y-m-d')!!}
+                                @endif
+                            </td>
+                            <td>
+                                {{$ticket->comments->count()}}
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

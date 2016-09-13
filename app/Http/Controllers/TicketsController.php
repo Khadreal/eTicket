@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -15,7 +16,12 @@ class TicketsController extends Controller
     public function index()
     {
         $tickets = Ticket::all();
+
+        //$tickets = Ticket::with('user')->get();
         return view('tickets.index', compact('tickets'));
+
+        //return view('tickets.index')->with('tickets',$tickets)->with('users',$users);
+
     }
     public function create()
     {
@@ -30,11 +36,11 @@ class TicketsController extends Controller
             'title'     => $request->get('title'),
             'content'   => $request->get('content'),
             'slug'      => $slug,
-            'user_id'   => 0
+            'user_id'   => $request->user()->id
         ));
         $ticket->save();
 
-        return redirect('/contact')->with('status', 'Your Ticket was submitted! The Unique id '.$slug);
+        return redirect('/add-ticket')->with('status', 'Your Ticket was submitted! The Unique id '.$slug);
     }
 
     public function show($slug)

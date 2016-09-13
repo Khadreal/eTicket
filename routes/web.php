@@ -17,11 +17,11 @@ Route::get('/',[
 Route::get('/about',[
     'uses' => 'PagesController@about'
 ]);
-Route::get('/contact',[
+Route::get('/add-ticket',[
     'uses' => 'TicketsController@create'
 ]);
 //Ticket Route
-Route::post('/contact',[
+Route::post('/add-ticket',[
     'uses' => 'TicketsController@store'
 ]);
 Route::get('/tickets',[

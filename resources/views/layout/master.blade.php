@@ -60,7 +60,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/') }}">Home</a></li>
                 <li><a href="{{ url('/about') }}">About Us</a></li>
-                <li><a href="{{ url('/contact') }}">Contact Us</a></li>
+                <li><a href="{{ url('/add-ticket') }}">Submit Ticket</a></li>
                 <li><a href="{{ url('/tickets') }}">Tickets</a></li>
             </ul>
 
